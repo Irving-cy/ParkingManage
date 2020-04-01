@@ -13,4 +13,12 @@
     <groupId>com.chinasoft</groupId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.chinasoft</groupId>
+            <artifactId>parking-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
