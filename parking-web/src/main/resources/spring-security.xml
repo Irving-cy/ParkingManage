@@ -49,6 +49,16 @@
 <!--    		&lt;!&ndash; 配置加密的方式 &ndash;&gt;-->
 <!--    		<security:password-encoder ref="passwordEncoder"/>-->
 <!--    	</security:authentication-provider>-->
+
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="{noop}user"
+							   authorities="ROLE_USER" />
+				<security:user name="admin" password="{noop}admin"
+							   authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+
     </security:authentication-manager>
     
     <!-- 配置加密类1 -->
