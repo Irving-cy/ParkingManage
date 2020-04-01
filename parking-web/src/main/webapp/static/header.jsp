@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%--<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>--%>
 
 <!-- 页面头部 -->
 <header class="main-header">
@@ -23,7 +23,8 @@
 					class="dropdown-toggle" data-toggle="dropdown"> <img
 						src="${pageContext.request.contextPath}/img/user2-160x160.jpg"
 						class="user-image" alt="User Image"> <span class="hidden-xs">
-							<security:authentication property="principal.username" />
+					xxx
+<%--							<security:authentication property="principal.username" />--%>
 					</span>
 
 				</a>
