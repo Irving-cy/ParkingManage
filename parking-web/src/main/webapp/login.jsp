@@ -24,10 +24,10 @@
 	href="${pageContext.request.contextPath}/plugins/iCheck/square/blue.css">
 </head>
 
-<body class="hold-transition login-page" style="background-image: url(/img/photo2.png)">
+<body class="hold-transition login-page" style="background-image: url(/img/parking.jpg)">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="all-admin-index.html"><b>爱旅行</b>后台管理系统</a>
+			<a href="all-admin-index.html"><b>停车管理系统</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
