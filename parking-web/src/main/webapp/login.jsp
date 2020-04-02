@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-	isELIgnored="false" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${path}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,27 +14,46 @@
 	name="viewport">
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
+	href="${path}/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/font-awesome/css/font-awesome.min.css">
+	href="${path}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/ionicons/css/ionicons.min.css">
+	href="${path}/plugins/ionicons/css/ionicons.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/adminLTE/css/AdminLTE.css">
+	href="${path}/plugins/adminLTE/css/AdminLTE.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/iCheck/square/blue.css">
+	href="${path}/plugins/iCheck/square/blue.css">
+<script type="text/javascript" src="${path}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+<script type="text/javascript">
+		// 随机展示背景图片
+		var imgs = [ "${path}/img/background1.jpg",
+						"${path}/img/background2.jpg",
+						"${path}/img/background3.jpg",
+						"${path}/img/background4.jpg",
+						"${path}/img/background5.jpg",
+						"${path}/img/background6.jpg",
+						"${path}/img/background7.jpg"
+		  			  ];
+		var random = parseInt(Math.random() * (imgs.length));
+
+		$(function() {
+					$("body").css("background-image","url(" + imgs[random] + ")");
+				});
+</script>
+
 </head>
 
-<body class="hold-transition login-page" style="background-image: url(/img/parking.jpg)">
+<body class="hold-transition login-page" id="body" >
 	<div class="login-box">
 		<div class="login-logo">
 			<a href="all-admin-index.html"><b>停车管理系统</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
-			<p class="login-box-msg">登录系统</p>
+			<p class="login-box-msg" style="color: black;font-size: 20px">登录系统</p>
 
-			<form action="${pageContext.request.contextPath}/login" method="post">
+			<form action="${path}/login" method="post">
 				<div class="form-group has-feedback">
 					<input type="text" name="username" class="form-control"
 						placeholder="用户名"> <span
@@ -70,11 +90,11 @@
 	<!-- Bootstrap 3.3.6 -->
 	<!-- iCheck -->
 	<script
-		src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+		src="${path}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
+		src="${path}/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
+		src="${path}/plugins/iCheck/icheck.min.js"></script>
 	<script>
 		$(function() {
 			$('input').iCheck({

@@ -57,9 +57,9 @@
   </servlet-mapping>
 
   <!-- 添加错误代码跳转页面 -->
-<!--  <error-page>-->
-<!--    <error-code>403</error-code>-->
-<!--    <location>/403.jsp</location>-->
-<!--  </error-page>-->
+  <error-page>
+    <error-code>403</error-code>
+    <location>/403.jsp</location>
+  </error-page>
 
 </web-app>
