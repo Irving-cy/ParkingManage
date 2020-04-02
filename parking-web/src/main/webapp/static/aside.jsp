@@ -40,7 +40,7 @@
 							class="fa fa-circle-o"></i> 用户管理
 					</a></li>
 					<li id="role-setting"><a
-						href="${pageContext.request.contextPath}/role/findAll?page=1&pageSize=${pageInfo.pageSize}"> <i
+						href="${pageContext.request.contextPath}/fee/findAll"> <i
 							class="fa fa-circle-o"></i> 费率设置
 					</a></li>
 				</ul></li>
