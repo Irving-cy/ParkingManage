@@ -19,6 +19,7 @@ public class DailyIncomeController {
     @Autowired
     private DailyIncomeService dailyIncomeService;
 
+    //查询日结算
     @RequestMapping("findAll")
     public ModelAndView findAll(@RequestParam(name = "page",defaultValue = "1") Integer page,
                                 @RequestParam(name = "pageSize",defaultValue = "5") Integer pageSize){
@@ -33,5 +34,15 @@ public class DailyIncomeController {
         mv.addObject("pageInfo",pageInfo);
         return mv;
     }
+
+//    //显示结算的详细
+//    @RequestMapping("findByTime")
+//    public ModelAndView findByTime(@RequestParam("id") Integer id){
+//        ModelAndView mv = new ModelAndView();
+//        DailyIncome dailyIncomeDetaile = dailyIncomeService.findByTime();
+//        mv.setViewName("dailyIncome-detail");
+//        mv.addObject("",dailyIncomeDetaile);
+//
+//    }
 
 }

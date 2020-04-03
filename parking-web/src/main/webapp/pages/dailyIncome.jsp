@@ -189,7 +189,9 @@
                                         <td><span class="label label-success">Approved</span></td>
                                         <td>${dilyIncome.time}</td>        <%--    --%>
                                         <td>${dilyIncome.income}</td>        <%--    --%>
-                                        <td><span class="label label-success">Approved</span></td>
+                                        <td>
+                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findByTime?time=${dilyIncome.time}'">详情</button>
+                                        </td>
                                     </tr>
                                 </c:forEach>
 

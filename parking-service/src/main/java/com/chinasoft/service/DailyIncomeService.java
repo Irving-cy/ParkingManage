@@ -7,4 +7,6 @@ import java.util.List;
 public interface DailyIncomeService {
 
     List<DailyIncome> findAll(Integer page, Integer pageSize);
+
+    DailyIncome findByTime();
 }

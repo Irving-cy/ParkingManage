@@ -22,4 +22,9 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
         System.out.println("2");
         return dailyIncomeDao.findAll();
     }
+
+    @Override
+    public DailyIncome findByTime() {
+        return dailyIncomeDao.findByTime();
+    }
 }
