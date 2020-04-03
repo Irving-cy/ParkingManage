@@ -63,8 +63,8 @@
 							href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=${pageInfo.pageSize}">
 						<i class="fa fa-circle-o"></i> 月票管理
 					</a></li>
-					<li id="product-setting"><a
-							href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=${pageInfo.pageSize}">
+					<li id="dailyIncome-setting"><a
+							href="${pageContext.request.contextPath}/dailyIncome/findAll?page=1&pageSize=${pageInfo.pageSize}">
 						<i class="fa fa-circle-o"></i> 收入统计
 					</a></li>
 
