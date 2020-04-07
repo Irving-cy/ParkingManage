@@ -122,7 +122,7 @@
 							<div class="box-tools pull-right">
 								<div class="has-feedback">
 									<form action="${pageContext.request.contextPath}/user/search" method="post">
-										<input type="text" class="form-control input-sm" name="name" id="name" placeholder="搜索">
+										<input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="搜索">
 										<button type="submit" class="btn btn-default" value="搜索" style="width: 70px;height: 35px">
 											搜索
 										</button>
@@ -193,8 +193,13 @@
 							<div class="form-group form-inline">
 								总共${pageInfo.pages} 页,当前第${pageInfo.pageNum}页，共${pageInfo.total}条数据。 每页
 								<select class="form-control" onchange="changePageSize()" id="changePageSize">
-									<c:forEach begin="1" end="${pageInfo.total}" var="rowNum">
-										<option>${rowNum}</option>
+									<c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
+										<c:if test="${pageInfo.pageSize==rowNum}">
+											<option selected>${rowNum}</option>
+										</c:if>
+										<c:if test="${pageInfo.pageSize!=rowNum}">
+												  <option>${rowNum}</option>
+											  </c:if>
 									</c:forEach>
 								</select> 条
 							</div>
