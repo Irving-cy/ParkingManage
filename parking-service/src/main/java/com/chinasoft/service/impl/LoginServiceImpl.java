@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService {
         // 需要给该对象提供username password authorities
         UserInfo userInfo = loginDao.findUserByName(username);
         String roleName = roleDao.findRoleNameById(userInfo.getRole());
-        System.out.println("aaaaaaa"+userInfo.getName()+"  "+userInfo.getPassword()+"  "+userInfo.getRole());
         User user = new User(userInfo.getName(),userInfo.getPassword(),true,true,true,true,getAuthority(roleName));
         return user;
     }

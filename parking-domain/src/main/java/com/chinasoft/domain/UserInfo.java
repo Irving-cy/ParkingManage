@@ -19,5 +19,6 @@ public class UserInfo {
     private Date createtime; //添加时间
     private String password;    //密码
     private Integer role;   //用户权限 1表示管理员;0表示收费用户
+    private String carNumber; //车牌号
 
 }

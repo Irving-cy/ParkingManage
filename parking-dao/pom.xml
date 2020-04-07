@@ -10,14 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>parking-dao</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.chinasoft</groupId>
-            <artifactId>parking-domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
     <groupId>com.chinasoft</groupId>
     <packaging>jar</packaging>
 
