@@ -30,7 +30,7 @@ public interface UserDao {
     @Delete("delete from user where id=#{id}")
     void delete(Integer id);
 
-    @Select("select * from user where id= #{id}")
+    @Select("select * from user where id=#{id}")
     UserInfo change(Integer id);
 
     /**
@@ -42,13 +42,12 @@ public interface UserDao {
 
     /**
      * 根据用户名模糊查询用户信息,并分页显示
-     * @param page
-     * @param pageSize
-     * @param name
+
+     * @param search
      * @return
      */
-    @Select("SELECT * from user WHERE name LIKE '%#{name}%'")
-    List<UserInfo> search(Integer page, Integer pageSize, String name);
+    @Select("SELECT * from user WHERE name LIKE #{search}")
+    List<UserInfo> search(String search);
 
 
 

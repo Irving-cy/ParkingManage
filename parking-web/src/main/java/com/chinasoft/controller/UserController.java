@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -98,15 +99,18 @@ public class UserController {
      * @param pageSize
      * @return
      */
-    @RequestMapping("search")
+    @RequestMapping(value = "search")
     public ModelAndView search(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                 @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
-                               @RequestParam(value = "name") String name
+                              @RequestParam(value = "search") String search
     ){
         ModelAndView mv=new ModelAndView();
+        //String searchstr = "%"+search+"%";
+        mv.addObject("search",search);
         mv.setViewName("user-search");
         //生成分页消息
-        List<UserInfo> lists=userService.search(page,pageSize,name);
+        List<UserInfo> lists=userService.search(page,pageSize,search);
+        System.out.println(search);
         PageInfo<UserInfo> pageInfo=new PageInfo<>(lists);
         mv.addObject("pageInfo",pageInfo);
         return mv;

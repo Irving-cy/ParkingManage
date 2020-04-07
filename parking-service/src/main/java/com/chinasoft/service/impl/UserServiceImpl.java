@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserInfo userInfo) {
         userInfo.setPassword(PasswordUtils.setBCryptPasswordEncoder(userInfo.getPassword()));
         userDao.saveUser(userInfo);
-        System.out.println(userInfo);
     }
 
     /**
@@ -73,12 +72,14 @@ public class UserServiceImpl implements UserService {
      * 模糊查用户信息
      * @param page
      * @param pageSize
-     * @param name
+     * @param search
      * @return
      */
     @Override
-    public List<UserInfo> search(Integer page, Integer pageSize, String name) {
-        return userDao.search(page,pageSize,name);
+    public List<UserInfo> search(Integer page, Integer pageSize, String search) {
+        PageHelper.startPage(page,pageSize);
+        String searchstr = "%"+search+"%";
+        return userDao.search(searchstr);
     }
 
 

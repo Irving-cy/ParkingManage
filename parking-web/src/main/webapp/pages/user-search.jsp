@@ -126,12 +126,12 @@
 										<td><input name="ids" type="checkbox"></td>
 										<td>${user.id }</td>
 										<td>${user.name }</td>
-										<td>${user.createtime }</td>
+										<td>${user.createtimeStr }</td>
 										<td>${user.role }</td>
 										<td>${user.carNumber}</td>
 										<td class="text-center">
-											<a href="${pageContext.request.contextPath}/user/change" class="btn bg-olive btn-xs">修改</a>
-											<a href="${pageContext.request.contextPath}/user/delete" class="btn bg-olive btn-xs">删除</a>
+											<a href="${pageContext.request.contextPath}/user/change?id=${user.id}" class="btn bg-olive btn-xs">修改</a>
+											<a href="${pageContext.request.contextPath}/user/delete?id=${user.id}" class="btn bg-olive btn-xs">删除</a>
 										</td>
 									</tr>
 								</c:forEach>
@@ -159,10 +159,15 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共${pageInfo.pages} 页，共${pageInfo.total}条数据。 每页
+								总共${pageInfo.pages} 页,当前第${pageInfo.pageNum}页，共${pageInfo.total}条数据。 每页
 								<select class="form-control" onchange="changePageSize()" id="changePageSize">
-									<c:forEach begin="1" end="${pageInfo.total}" var="rowNum">
-										<option>${rowNum}</option>
+									<c:forEach begin="1" end="${pageInfo.total >5?5:pageInfo.total}" var="rowNum">
+										<c:if test="${pageInfo.pageSize == rowNum}">
+										<option selected>${rowNum}</option>
+										</c:if>
+										<c:if test="${pageInfo.pageSize != rowNum}">
+											<option>${rowNum}</option>
+										</c:if>
 									</c:forEach>
 								</select> 条
 							</div>
@@ -171,15 +176,15 @@
 						<div class="box-tools pull-right">
 							<ul class="pagination">
 								<li>
-									<a href="${pageContext.request.contextPath}/user/search?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+									<a href="${pageContext.request.contextPath}/user/search?page=1&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Previous">首页</a>
 								</li>
-								<li><a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.prePage}&pageSize=${pageInfo.pageSize}&search=${search}">上一页</a></li>
 								<c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-									<li><a href="${pageContext.request.contextPath}/user/search?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/search?page=${pNum}&pageSize=${pageInfo.pageSize}&search=${search}">${pNum}</a></li>
 								</c:forEach>
-								<li><a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&search=${search}">下一页</a></li>
 								<li>
-									<a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+									<a href="${pageContext.request.contextPath}/user/search?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Next">尾页</a>
 								</li>
 							</ul>
 						</div>
@@ -257,7 +262,7 @@
 				var pageSize = $("#changePageSize").val();
 
 				//向服务器发送请求，改变没页显示条数
-				location.href = "${pageContext.request.contextPath}/user/search?page=1&pageSize="
+				location.href = "${pageContext.request.contextPath}/user/search?search=${search}&page=1&pageSize="
 						+ pageSize;
 			}
 
