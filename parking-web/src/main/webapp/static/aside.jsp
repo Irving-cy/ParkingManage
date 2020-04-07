@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  isELIgnored="false" pageEncoding="UTF-8"%>
-<%--<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>--%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -12,8 +12,8 @@
 			</div>
 			<div class="pull-left info">
 				<p>
-					xxx
-<%--					<security:authentication property="principal.username" />--%>
+<%--					xxx--%>
+					<security:authentication property="principal.username" />
 				</p>
 				<a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
 			</div>
@@ -59,8 +59,8 @@
 						href="${pageContext.request.contextPath}/orders/findAll?page=1&pageSize=${pageInfo.pageSize}"> <i
 							class="fa fa-circle-o"></i> 出口管理
 					</a></li>
-					<li id="product-setting"><a
-							href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=${pageInfo.pageSize}">
+					<li id="Ticket-setting"><a
+							href="${pageContext.request.contextPath}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}">
 						<i class="fa fa-circle-o"></i> 月票管理
 					</a></li>
 					<li id="dailyIncome-setting"><a

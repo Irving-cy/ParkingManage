@@ -17,6 +17,6 @@ public interface UserService {
 
     void savechange(UserInfo userInfo);
 
-    List<UserInfo> search(Integer page, Integer pageSize, String name);
+    List<UserInfo> search(Integer page, Integer pageSize, String search);
 
 }

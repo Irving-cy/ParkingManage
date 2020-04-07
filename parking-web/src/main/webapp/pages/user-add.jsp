@@ -128,7 +128,7 @@
 						<div class="col-md-4 data">
 							<select class="form-control select2" style="width: 100%"
 									name="role">
-								<option value="0" selected="selected">月票用户</option>
+								<option value="0" selected="selected">收费用户</option>
 								<option value="1">管理员</option>
 							</select>
 						</div>

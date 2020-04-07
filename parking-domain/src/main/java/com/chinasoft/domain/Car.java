@@ -1,5 +1,6 @@
 package com.chinasoft.domain;
 
+import com.chinasoft.utils.DateUtils;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,4 +18,8 @@ public class Car {
 //    vip到期日期
     private Date expireDate;
     private String expireDateStr;
+
+    public String getExpireDateStr() {
+        return expireDateStr = expireDate == null ? "" : DateUtils.date2String(expireDate,"yyyy-MM-dd");
+    }
 }
