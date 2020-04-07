@@ -117,7 +117,7 @@
 									<i class="fa fa-calendar"></i>
 								</div>
 								<input type="text" class="form-control pull-right"
-									   id="datepicker-a3" name="createtime" value="${user.createtime}" readonly="readonly">
+									   id="datepicker-a3" name="createtime" value="${user.createtimeStr}" readonly="readonly">
 							</div>
 						</div>
 
