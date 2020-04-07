@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="path" value="${path}"/>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +33,16 @@
 						"${path}/img/background4.jpg",
 						"${path}/img/background5.jpg",
 						"${path}/img/background6.jpg",
-						"${path}/img/background7.jpg"
+						"${path}/img/background7.jpg",
+						"${path}/img/background8.jpg",
+						"${path}/img/background9.jpg",
+						"${path}/img/background10.jpg",
+						"${path}/img/background11.jpg",
+						"${path}/img/background12.jpg",
+						"${path}/img/background13.jpg",
+						"${path}/img/background14.jpg",
+						"${path}/img/background15.jpg",
+						"${path}/img/background16.jpg",
 		  			  ];
 		var random = parseInt(Math.random() * (imgs.length));
 
