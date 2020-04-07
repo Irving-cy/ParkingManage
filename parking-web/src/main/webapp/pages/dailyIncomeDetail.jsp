@@ -140,73 +140,67 @@
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+
+        <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                Simple Tables
-                <small>preview of simple tables</small>
+                出入车辆明细 <small></small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Simple</li>
-            </ol>
         </section>
+        <!-- 内容头部 /-->
 
-        <!-- Main content -->
+        <!-- 正文区域 -->
         <section class="content">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Responsive Hover Table</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th>编号</th>
-                                    <th>用户</th>
-                                    <th>时间</th>
-                                    <th>今日总计</th>
-                                    <th>明细</th>
-                                </tr>
-                                <c:forEach items="${dailyIncome}" var="dilyIncome">
-                                    <tr>
-                                        <td>${dilyIncome.id}</td>        <%--    --%>
-                                        <td><span class="label label-success">Approved</span></td>
-                                        <td>${dilyIncome.timeStr}</td>        <%--    --%>
-                                        <td>${dilyIncome.income}</td>        <%--    --%>
-                                        <td>
-                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findByTime?time=${dilyIncome.time}'">详情</button>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+            <!--游客信息-->
+            <div class="panel panel-default">
+                <div class="panel-heading">游客信息</div>
+                <!--数据列表-->
+                <table id="dataList"
+                       class="table table-bordered table-striped table-hover dataTable">
+                    <thead>
+                    <tr>
+                        <th class="">用户姓名</th>
+                        <th class="">车牌号</th>
+                        <th class="">离开时间</th>
+                        <th class="">停车时间</th>
+                        <th class="">用户型号</th>
+                        <th class="">本次费用</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="record" items="${pageInfo.list}">
+                        <tr>
+                            <td>${record.user.name}</td>
+                            <td><input type="text" size="10" value="${record.carNumber}"
+                                       readonly="readonly"></td>
+                            <td><input type="text" size="10" value="${record.outTime}"
+                                       readonly="readonly"></td>
+                            <td><input type="text" size="20" value="${record.inTime}"
+                                       readonly="readonly"></td>
+                            <td><input type="text" size="15" value="${record.type}"
+                                       readonly="readonly"></td>
+                            <td><input type="text" size="28" value="${record.fee}"
+                                       readonly="readonly"></td>
+                        </tr>
+                    </c:forEach>
 
 
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                    </tbody>
+                </table>
+                <!--数据列表/-->
             </div>
-        </section>
-        <!-- /.content -->
+            <!--游客信息/--><!--工具栏-->
+            <div class="box-tools text-center">
+
+                <button type="button" class="btn bg-default"
+                        onclick="history.back(-1);">返回</button>
+            </div>
+            <!--工具栏/--> </section>
+        <!-- 正文区域 /-->
+
+
     </div>
-    <!-- /.content-wrapper -->
     <!-- 内容区域 /-->
 
     <!-- 底部导航 -->
