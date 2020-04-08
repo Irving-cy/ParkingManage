@@ -152,9 +152,9 @@
 
         <!-- 正文区域 -->
         <section class="content">
-            <!--游客信息-->
+            <!--日报信息-->
             <div class="panel panel-default">
-                <div class="panel-heading">游客信息</div>
+                <div class="panel-heading">${time} 车辆进出日报信息</div>
                 <!--数据列表-->
                 <table id="dataList"
                        class="table table-bordered table-striped table-hover dataTable">
@@ -190,13 +190,63 @@
                 </table>
                 <!--数据列表/-->
             </div>
-            <!--游客信息/--><!--工具栏-->
+            <!--日报信息/-->
+            <!-- .box-footer-->
+            <div class="box-footer">
+                <div class="pull-left">
+                    <div class="form-group form-inline">
+                        总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
+                        <select class="form-control" onchange="changePageSize()" id="changePageSize">
+                            <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
+                                <option>
+                                    <c:if test="${pageInfo.pageSize == rowNum}">
+                                        ${rowNum}
+                                    </c:if>
+                                    <c:if test="${pageInfo.pageSize != rowNum}">
+                                        ${rowNum}
+                                    </c:if>
+                                </option>
+                            </c:forEach>
+                        </select> 条
+                    </div>
+                </div>
+
+                <div class="box-tools pull-right">
+                    <ul class="pagination">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
+                            time=${time}&page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
+                            time=${time}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a></li>
+                        <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
+                                ${time}&page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a>
+                            </li>
+                        </c:forEach>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
+                            ${time}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
+                            ${time}&page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.box-footer-->
+            <!--工具栏-->
             <div class="box-tools text-center">
 
                 <button type="button" class="btn bg-default"
                         onclick="history.back(-1);">返回</button>
             </div>
-            <!--工具栏/--> </section>
+            <!--工具栏/-->
+        </section>
         <!-- 正文区域 /-->
 
 

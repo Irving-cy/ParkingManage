@@ -12,16 +12,17 @@ public interface DailyIncomeDao {
     @Select("select * from daily_income group by time desc")
     List<DailyIncome> findAll();
 
-    @Select("select u.name,r.carNumber,r.outTime,r.inTime,r.type,r.fee from record r left join user u on r.user_id = u.id where SUBSTRING(outTime,1,10) = #{time}")//待定
+    @Select("select " +
+            "u.name,r.carNumber,r.outTime,r.inTime,r.type,r.fee " +
+            "from record r " +
+            "left join user u on r.user_id = u.id " +
+            "where SUBSTRING(outTime,1,10) = #{time}")
     @Results(id = "recordMap",value = {
             @Result(id = true,column = "id",property = "id"),
             @Result(column = "name",property = "name"),
             @Result(column = "carNumber",property = "carNumber"),
             @Result(column = "outTime",property = "outTime"),
     })
-    List<Record> findByTime(Date time);
+    List<Record> findDetailByTime(Date time);
 
-    Double findVIPCostByTime(Date time);
-
-    Double findFeeByTime(Date time);
 }

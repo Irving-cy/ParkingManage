@@ -39,19 +39,17 @@ public class DailyIncomeController {
     }
     
     //显示结算的详细
-    @RequestMapping("findByTime")
-    public ModelAndView findByTime(@RequestParam(name = "page",defaultValue = "1") Integer page,
+    @RequestMapping("findDetailByTime")
+    public ModelAndView findDetailByTime(@RequestParam(name = "page",defaultValue = "1") Integer page,
                                    @RequestParam(name = "pageSize",defaultValue = "5") Integer pageSize,
                                     @RequestParam("time") Date time){
-        List<Record> lists = dailyIncomeService.findByTime(page,pageSize,time);
-        for (Record list : lists) {
-            System.out.println(list);
-        }
+        List<Record> lists = dailyIncomeService.findDetailByTime(page,pageSize,time);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("dailyIncomeDetail");
         //生成分页信息
         PageInfo<Record> pageInfo = new PageInfo<>(lists);
         mv.addObject("pageInfo",pageInfo);
+        mv.addObject("time",time);
         return mv;
     }
 

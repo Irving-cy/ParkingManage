@@ -1,6 +1,8 @@
 package com.chinasoft.service.impl;
 
 import com.chinasoft.dao.DailyIncomeDao;
+import com.chinasoft.dao.RecordDao;
+import com.chinasoft.dao.UserDao;
 import com.chinasoft.domain.DailyIncome;
 import com.chinasoft.domain.Record;
 import com.chinasoft.service.DailyIncomeService;
@@ -17,8 +19,11 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
     @Autowired
     private DailyIncomeDao dailyIncomeDao;
 
-//    @Autowired
-//    private RecordDao recordDao;
+    @Autowired
+    private RecordDao recordDao;
+
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public List<DailyIncome> findAll(Integer page,Integer pageSize) {
@@ -27,9 +32,9 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
         List<DailyIncome> all = dailyIncomeDao.findAll();
         for (DailyIncome dailyIncome : all) {
             //查询record表的fee的信息  或者调用RecordDao里面的方法获取fee的值
-            Double todayIncome = dailyIncomeDao.findFeeByTime(dailyIncome.getTime());
+            Double todayIncome = recordDao.findFeeByTime(dailyIncome.getTime());
             //查询并计算今天的月票收入
-            Double vipIncome = dailyIncomeDao.findVIPCostByTime(dailyIncome.getTime());
+            Double vipIncome = userDao.findVIPCost(dailyIncome.getTime());
             Double income = todayIncome + vipIncome;
             dailyIncome.setIncome(income);
         }
@@ -37,9 +42,9 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
     }
 
     @Override
-    public List<Record> findByTime(Integer page, Integer pageSize, Date time) {
+    public List<Record> findDetailByTime(Integer page, Integer pageSize, Date time) {
         //表示开始分页
         PageHelper.startPage(page,pageSize);
-        return dailyIncomeDao.findByTime(time);
+        return dailyIncomeDao.findDetailByTime(time);
     }
 }

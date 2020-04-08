@@ -4,6 +4,7 @@ import com.chinasoft.domain.Fee;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,4 +33,5 @@ public interface FeeDao {
      */
     @Update("update fee set vipRate = #{vipRate}, commonRate = #{commonRate}, vipCost = #{vipCost}")
     void updateFee(Fee fee);
+
 }

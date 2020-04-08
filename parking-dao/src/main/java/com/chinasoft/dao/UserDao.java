@@ -4,6 +4,7 @@ import com.chinasoft.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.ui.ModelMap;
 
+import java.util.Date;
 import java.util.List;
 
 public interface UserDao {
@@ -50,5 +51,7 @@ public interface UserDao {
     List<UserInfo> search(String search);
 
 
-
+    //--? zlx ?--//
+    @Select("select f.vipCost*a.num cost from fee f,(select role,COUNT(role) num from user where SUBSTRING(createTime,1,10) = #{time} group by role) a where f.id = a.role")
+    Double findVIPCost(Date time);
 }

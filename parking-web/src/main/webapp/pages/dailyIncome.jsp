@@ -160,6 +160,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        <!-- .box-header -->
                         <div class="box-header">
                             <h3 class="box-title">Responsive Hover Table</h3>
 
@@ -174,6 +175,7 @@
                             </div>
                         </div>
                         <!-- /.box-header -->
+                        <!-- .box-body -->
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tr>
@@ -183,22 +185,59 @@
                                     <th>今日总计</th>
                                     <th>明细</th>
                                 </tr>
-                                <c:forEach items="${dailyIncome}" var="dilyIncome">
+                                <c:forEach items="${pageInfo.list}" var="dilyIncome">
                                     <tr>
                                         <td>${dilyIncome.id}</td>        <%--    --%>
                                         <td><span class="label label-success">Approved</span></td>
                                         <td>${dilyIncome.timeStr}</td>        <%--    --%>
                                         <td>${dilyIncome.income}</td>        <%--    --%>
                                         <td>
-                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findByTime?time=${dilyIncome.time}'">详情</button>
+                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dilyIncome.time}'">详情</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
-
-
                             </table>
                         </div>
                         <!-- /.box-body -->
+
+                        <!-- .box-footer-->
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <div class="form-group form-inline">
+                                    总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
+                                    <select class="form-control" onchange="changePageSize()" id="changePageSize">
+                                        <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
+                                            <option>
+                                                <c:if test="${pageInfo.pageSize == rowNum}">
+                                                    ${rowNum}
+                                                </c:if>
+                                                <c:if test="${pageInfo.pageSize != rowNum}">
+                                                    ${rowNum}
+                                                </c:if>
+                                            </option>
+                                        </c:forEach>
+                                    </select> 条
+                                </div>
+                            </div>
+
+                            <div class="box-tools pull-right">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
+                                    </li>
+                                    <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a></li>
+                                    <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
+                                        <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a></li>
+                                    </c:forEach>
+                                    <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a></li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /.box-footer-->
                     </div>
                     <!-- /.box -->
                 </div>
