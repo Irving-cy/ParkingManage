@@ -33,24 +33,24 @@ public class DailyIncomeController {
         mv.setViewName("dailyIncome");
         //生成分页信息
         PageInfo<DailyIncome> pageInfo = new PageInfo<>(lists);
-        mv.addObject("dailyIncome",pageInfo);
+        mv.addObject("pageInfo",pageInfo);
         return mv;
 
     }
     
-    //显示结算的详细
-    @RequestMapping("findDetailByTime")
-    public ModelAndView findDetailByTime(@RequestParam(name = "page",defaultValue = "1") Integer page,
-                                   @RequestParam(name = "pageSize",defaultValue = "5") Integer pageSize,
-                                    @RequestParam("time") Date time){
-        List<Record> lists = dailyIncomeService.findDetailByTime(page,pageSize,time);
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("dailyIncomeDetail");
-        //生成分页信息
-        PageInfo<Record> pageInfo = new PageInfo<>(lists);
-        mv.addObject("pageInfo",pageInfo);
-        mv.addObject("time",time);
-        return mv;
-    }
+//    //显示结算的详细
+//    @RequestMapping("findDetailByTime")
+//    public ModelAndView findDetailByTime(@RequestParam(name = "page",defaultValue = "1") Integer page,
+//                                   @RequestParam(name = "pageSize",defaultValue = "5") Integer pageSize,
+//                                    @RequestParam("time") Date time){
+//        List<Record> lists = dailyIncomeService.findDetailByTime(page,pageSize,time);
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("dailyIncomeDetail");
+//        //生成分页信息
+//        PageInfo<Record> pageInfo = new PageInfo<>(lists);
+//        mv.addObject("pageInfo",pageInfo);
+//        mv.addObject("time",time);
+//        return mv;
+//    }
 
 }

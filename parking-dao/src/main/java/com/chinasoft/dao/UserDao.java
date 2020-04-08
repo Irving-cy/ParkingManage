@@ -53,5 +53,5 @@ public interface UserDao {
 
     //--? zlx ?--//
     @Select("select f.vipCost*a.num cost from fee f,(select role,COUNT(role) num from user where SUBSTRING(createTime,1,10) = #{time} group by role) a where f.id = a.role")
-    Double findVIPCost(Date time);
+    Double findVIPCost(String time);
 }

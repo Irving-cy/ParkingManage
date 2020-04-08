@@ -29,22 +29,26 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
     public List<DailyIncome> findAll(Integer page,Integer pageSize) {
         //表示开始分页
         PageHelper.startPage(page,pageSize);
-        List<DailyIncome> all = dailyIncomeDao.findAll();
-        for (DailyIncome dailyIncome : all) {
+        List<DailyIncome> lists= dailyIncomeDao.findAll();
+        for (DailyIncome dailyIncome : lists) {
+            System.out.println(dailyIncome);
+            String time = dailyIncome.getTimeStr();
             //查询record表的fee的信息  或者调用RecordDao里面的方法获取fee的值
-            Double todayIncome = recordDao.findFeeByTime(dailyIncome.getTime());
+            Double todayIncome = recordDao.findFeeByTime(time);
             //查询并计算今天的月票收入
-            Double vipIncome = userDao.findVIPCost(dailyIncome.getTime());
-            Double income = todayIncome + vipIncome;
-            dailyIncome.setIncome(income);
+
+//            Double vipIncome = userDao.findVIPCost(time);
+//            Double income = todayIncome + vipIncome;
+
+            dailyIncome.setIncome(todayIncome);
         }
-        return all;
+        return lists;
     }
 
-    @Override
-    public List<Record> findDetailByTime(Integer page, Integer pageSize, Date time) {
-        //表示开始分页
-        PageHelper.startPage(page,pageSize);
-        return dailyIncomeDao.findDetailByTime(time);
-    }
+//    @Override
+//    public List<Record> findDetailByTime(Integer page, Integer pageSize, Date time) {
+//        //表示开始分页
+//        PageHelper.startPage(page,pageSize);
+//        return dailyIncomeDao.findDetailByTime(time);
+//    }
 }

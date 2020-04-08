@@ -10,5 +10,5 @@ public interface DailyIncomeService {
 
     List<DailyIncome> findAll(Integer page,Integer pageSize);
 
-    List<Record> findDetailByTime(Integer page, Integer pageSize, Date time);
+//    List<Record> findDetailByTime(Integer page, Integer pageSize, Date time);
 }

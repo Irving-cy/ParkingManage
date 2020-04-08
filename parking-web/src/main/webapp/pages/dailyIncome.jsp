@@ -180,7 +180,6 @@
                             <table class="table table-hover">
                                 <tr>
                                     <th>编号</th>
-                                    <th>用户</th>
                                     <th>时间</th>
                                     <th>今日总计</th>
                                     <th>明细</th>
@@ -188,7 +187,6 @@
                                 <c:forEach items="${pageInfo.list}" var="dilyIncome">
                                     <tr>
                                         <td>${dilyIncome.id}</td>        <%--    --%>
-                                        <td><span class="label label-success">Approved</span></td>
                                         <td>${dilyIncome.timeStr}</td>        <%--    --%>
                                         <td>${dilyIncome.income}</td>        <%--    --%>
                                         <td>
