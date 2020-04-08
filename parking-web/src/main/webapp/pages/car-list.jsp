@@ -120,11 +120,12 @@
 
                         <!--工具栏-->
                         <div class="pull-left">
-                            <form method="post" action="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}">
+                            <form method="post" id="formId" action="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}">
                                 <div class="has-feedback">
-                                    <input type="text" name="carNum" class="form-control input-sm" placeholder="车牌号">&emsp;
-                                    <input type="text" name="ownerName" class="form-control input-sm" placeholder="车主姓名">&emsp;
-                                    <b><input type="submit" style="color: green;font-size: 15px;text-align: center" class="form-control input-sm" value="查    询"></b>&emsp;
+                                    <input type="text" name="carNum" class="form-control input-sm" value="${carNum}" placeholder="车牌号">&emsp;
+                                    <input type="text" name="ownerName" class="form-control input-sm" value="${ownerName}" placeholder="车主姓名">&emsp;
+<%--                                    <b><input type="submit" style="color: green;font-size: 15px;text-align: center" class="form-control input-sm" value="查    询"></b>&emsp;--%>
+                                    <button type="button"  style="text-align: center" class="btn btn-success form-control input-sm" onclick="submitByButton()" >查&emsp;&emsp;&emsp;询</button>&emsp;
                                 </div>
 
                             </form>
@@ -238,13 +239,13 @@
 
                     <div class="box-tools pull-right">
                         <ul class="pagination" >
-                            <li><a href="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum<=1?1:pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}" aria-label="Previous">首页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum<=1?1:pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">上一页</a></li>
                             <c:forEach begin="1" end="${pageInfo.pages}" var="pageNo">
-                                <li><a href="${path}/monthlyTicket/findAll?page=${pageNo}&pageSize=${pageInfo.pageSize}">${pageNo}</a></li>
+                                <li><a href="${path}/monthlyTicket/findAll?page=${pageNo}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">${pageNo}</a></li>
                             </c:forEach>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum>=pageInfo.pages?pageInfo.pages:pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum>=pageInfo.pages?pageInfo.pages:pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">下一页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}" aria-label="Next">尾页</a></li>
                         </ul>
                     </div>
 
@@ -364,7 +365,11 @@
         var pageSize = $("#changePageSize").val();
         //向服务器发送请求，改变没页显示条数
         location.href = "${path}/monthlyTicket/findAll?page=1&pageSize="
-            + pageSize;
+            + pageSize + "&carNum=${carNum}&ownerName=${ownerName}";
+    }
+
+    function submitByButton(){
+        $("#formId").submit();
     }
 
     $(document).ready(function() {
