@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>车辆信息</title>
+    <title>出口管理</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
 
@@ -108,27 +108,26 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">
-                                        <i class="fa fa-file-o"></i> 新建
-                                    </button>
-
-                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll'">
+<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
+<%--                                        <i class="fa fa-file-o"></i> 新建--%>
+<%--                                    </button>--%>
+                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/chukou/findAll'">
                                         <i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <form action="${pageContext.request.contextPath}/user/search" method="post">
-                                    <input type="text" class="form-control input-sm" name="name" id="name" placeholder="搜索">
-                                    <button type="submit" class="btn btn-default" value="搜索" style="width: 70px;height: 35px">
-                                        搜索
-                                    </button>
+                                <form action="${pageContext.request.contextPath}/chukou/search" method="post">
+                                    <div style="width:300px; height:30px;float:right">
+                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="" style="width:235px;height:30px;float:left">
+                                        <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+                                            搜索
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
-
                         </div>
                         <!--工具栏/-->
 
@@ -141,12 +140,12 @@
                                     <th class="" style="padding-right: 0px">
                                         <input id="selall" type="checkbox" class="icheckbox_square-blue">
                                     </th>
-                                    <th class="sorting_asc" style="text-align: center">ID</th>
-                                    <th class="sorting_desc">车牌号</th>
-                                    <th class="sorting_asc sorting_asc_disabled">进入时间</th>
-                                    <th class="sorting_desc sorting_desc_disabled">离开时间</th>
-                                    <th class="sorting_desc sorting_desc_disabled">费用</th>
-                                    <th class="text-center">操作</th>
+                                    <th>ID</th>
+                                    <th>车牌号</th>
+                                    <th>进入时间</th>
+                                    <th>离开时间</th>
+                                    <th>停车费用</th>
+                                    <th style="text-align: center">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -156,8 +155,8 @@
                                         <td><input name="ids" type="checkbox"></td>
                                         <td>${record.id }</td>
                                         <td>${record.carNumber }</td>
-                                        <td>${record.inTime }</td>
-                                        <td>${record.outTime }</td>
+                                        <td>${record.inTimeStr }</td>
+                                        <td>${record.outTimeStr }</td>
                                         <td>${record.fee}</td>
                                         <td class="text-center">
                                             <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">结账</a>

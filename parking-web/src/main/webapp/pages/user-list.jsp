@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>全部用户</title>
+<title>用户管理</title>
 <meta name="description" content="AdminLTE2定制版">
 <meta name="keywords" content="AdminLTE2定制版">
 
@@ -82,10 +82,10 @@
 				用户管理 <small>全部用户</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
+				<li><a href="#"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll">用户管理</a></li>
+					href="#">用户管理</a></li>
 
 				<li class="active">全部用户</li>
 			</ol>
@@ -111,24 +111,23 @@
 										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
-										
 										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll'">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
-
 								</div>
 							</div>
 							<div class="box-tools pull-right">
 								<div class="has-feedback">
 									<form action="${pageContext.request.contextPath}/user/search" method="post">
-										<input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="搜索">
-										<button type="submit" class="btn btn-default" value="搜索" style="width: 70px;height: 35px">
-											搜索
-										</button>
+										<div style="width:300px; height:30px;float:right">
+											<input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="用户名" style="width:235px;height:30px;float:left">
+											<button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+												搜索
+											</button>
+										</div>
 									</form>
 								</div>
-
 							</div>
 							<!--工具栏/-->
 
@@ -141,12 +140,12 @@
 										<th class="" style="padding-right: 0px"><input
 												id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
-										<th class="sorting_asc" style="text-align: center">ID</th>
-										<th class="sorting_desc">用户名</th>
-										<th class="sorting_asc sorting_asc_disabled">添加时间</th>
-										<th class="sorting_desc sorting_desc_disabled">用户权限</th>
-										<th class="sorting_desc sorting_desc_disabled">车牌号</th>
-										<th class="text-center">操作</th>
+										<th>ID</th>
+										<th>用户名</th>
+										<th>添加时间</th>
+										<th>用户权限</th>
+										<th>车牌号</th>
+										<th style="text-align: center">操作</th>
 									</tr>
 									</thead>
 									<tbody>
