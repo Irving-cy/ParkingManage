@@ -104,6 +104,33 @@
 						<!-- 数据表格 -->
 						<div class="table-box">
 
+							<!--工具栏-->
+							<div class="pull-left">
+								<div class="form-group form-inline">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">
+											<i class="fa fa-file-o"></i> 新建
+										</button>
+										<button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/user/findAll'">
+											<i class="fa fa-refresh"></i> 刷新
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="box-tools pull-right">
+								<div class="has-feedback">
+									<form action="${pageContext.request.contextPath}/user/search" method="post">
+										<div style="width:300px; height:30px;float:right">
+											<input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="用户名" style="width:235px;height:30px;float:left">
+											<button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+												搜索
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<!--工具栏/-->
+
 							<!--数据列表-->
 							<table id="dataList" class="table table-bordered table-striped table-hover dataTable" style="text-align: center">
 								<thead>

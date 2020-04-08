@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
          pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>停车管理系统首页</title>
+    <title>收入统计</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
 
@@ -16,72 +16,6 @@
     <meta
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
             name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <!-- Font Awesome -->
-    <!-- Ionicons -->
-    <!-- iCheck -->
-    <!-- Morris chart -->
-    <!-- jvectormap -->
-    <!-- Date Picker -->
-    <!-- Daterange picker -->
-    <!-- Bootstrap time Picker -->
-    <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/${pageContext.request.contextPath}/../plugins/timepicker/bootstrap-timepicker.min.css">-->
-    <!-- bootstrap wysihtml5 - text editor -->
-    <!--数据表格-->
-    <!-- 表格树 -->
-    <!-- select2 -->
-    <!-- Bootstrap Color Picker -->
-    <!-- bootstrap wysihtml5 - text editor -->
-    <!--bootstrap-markdown-->
-    <!-- Theme style -->
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-           folder instead of downloading all of them to reduce the load. -->
-    <!-- Ion Slider -->
-    <!-- ion slider Nice -->
-    <!-- bootstrap slider -->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- jQuery 2.2.3 -->
-    <!-- jQuery UI 1.11.4 -->
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <!-- Bootstrap 3.3.6 -->
-    <!-- Morris.js charts -->
-    <!-- Sparkline -->
-    <!-- jvectormap -->
-    <!-- jQuery Knob Chart -->
-    <!-- daterangepicker -->
-    <!-- datepicker -->
-    <!-- Bootstrap WYSIHTML5 -->
-    <!-- Slimscroll -->
-    <!-- FastClick -->
-    <!-- iCheck -->
-    <!-- AdminLTE App -->
-    <!-- 表格树 -->
-    <!-- select2 -->
-    <!-- bootstrap color picker -->
-    <!-- bootstrap time picker -->
-    <!--<script src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/${pageContext.request.contextPath}/../plugins/timepicker/bootstrap-timepicker.min.js"></script>-->
-    <!-- Bootstrap WYSIHTML5 -->
-    <!--bootstrap-markdown-->
-    <!-- CK Editor -->
-    <!-- InputMask -->
-    <!-- DataTables -->
-    <!-- ChartJS 1.0.1 -->
-    <!-- FLOT CHARTS -->
-    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <!-- jQuery Knob -->
-    <!-- Sparkline -->
-    <!-- Morris.js charts -->
-    <!-- Ion Slider -->
-    <!-- Bootstrap slider -->
-    <!-- 页面meta /-->
 
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/../plugins/bootstrap/css/bootstrap.min.css">
@@ -140,110 +74,157 @@
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+
+        <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                Simple Tables
-                <small>preview of simple tables</small>
+                收入统计 <small>每日收入</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Simple</li>
+                <li><a href="#"><i
+                        class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a
+                        href="#">收入统计</a></li>
+
+                <li class="active">每日收入</li>
             </ol>
         </section>
+        <!-- 内容头部 /-->
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <!-- .box-header -->
-                        <div class="box-header">
-                            <h3 class="box-title">Responsive Hover Table</h3>
+        <!-- 正文区域 -->
+        <section class="content"> <!-- .box-body -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">列表</h3>
+                </div>
 
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                <div class="box-body">
 
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
+                    <!-- 数据表格 -->
+                    <div class="table-box">
+
+                        <!--工具栏-->
+                        <div class="pull-left">
+                            <div class="form-group form-inline">
+                                <div class="btn-group">
+<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
+<%--                                        <i class="fa fa-file-o"></i> 新建--%>
+<%--                                    </button>--%>
+                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findAll'">
+                                        <i class="fa fa-refresh"></i> 刷新
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.box-header -->
-                        <!-- .box-body -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
+                        <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                                <form action="${pageContext.request.contextPath}/dailyIncome/search" method="post">
+                                    <div style="width:300px; height:30px;float:right">
+                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="" style="width:235px;height:30px;float:left">
+                                        <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+                                            搜索
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--工具栏/-->
+
+                        <!--数据列表-->
+                        <form action="/user/deletemore" method="post">
+                            <table id="dataList"
+                                   class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
                                 <tr>
+                                    <th class="" style="padding-right: 0px"><input
+                                            id="selall" type="checkbox" class="icheckbox_square-blue">
+                                    </th>
                                     <th>编号</th>
                                     <th>时间</th>
-                                    <th>今日总计</th>
-                                    <th>明细</th>
+                                    <th>每日收入总计</th>
+                                    <th style="text-align: center">操作</th>
                                 </tr>
+                                </thead>
+                                <tbody>
+
                                 <c:forEach items="${pageInfo.list}" var="dilyIncome">
                                     <tr>
-                                        <td>${dilyIncome.id}</td>        <%--    --%>
-                                        <td>${dilyIncome.timeStr}</td>        <%--    --%>
-                                        <td>${dilyIncome.income}</td>        <%--    --%>
-                                        <td>
+                                        <td><input name="ids" type="checkbox"></td>
+                                        <td>${dilyIncome.id}</td>
+                                        <td>${dilyIncome.timeStr}</td>
+                                        <td>${dilyIncome.income}</td>
+                                        <td style="text-align: center">
                                             <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dilyIncome.time}'">详情</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
+                                </tbody>
+                                <!--
+                            <tfoot>
+                            <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                            </tr>
+                            </tfoot>-->
                             </table>
-                        </div>
-                        <!-- /.box-body -->
+                        </form>
 
-                        <!-- .box-footer-->
-                        <div class="box-footer">
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
-                                    <select class="form-control" onchange="changePageSize()" id="changePageSize">
-                                        <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
-                                            <option>
-                                                <c:if test="${pageInfo.pageSize == rowNum}">
-                                                    ${rowNum}
-                                                </c:if>
-                                                <c:if test="${pageInfo.pageSize != rowNum}">
-                                                    ${rowNum}
-                                                </c:if>
-                                            </option>
-                                        </c:forEach>
-                                    </select> 条
-                                </div>
-                            </div>
+                        <!--数据列表/-->
 
-                            <div class="box-tools pull-right">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
-                                    </li>
-                                    <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a></li>
-                                    <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-                                        <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a></li>
-                                    </c:forEach>
-                                    <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a></li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <!-- /.box-footer-->
                     </div>
-                    <!-- /.box -->
+                    <!-- 数据表格 /-->
+
                 </div>
+                <!-- /.box-body -->
+
+                <!-- .box-footer-->
+                <div class="box-footer">
+                    <div class="pull-left">
+                        <div class="form-group form-inline">
+                            总共${pageInfo.pages} 页,当前第${pageInfo.pageNum}页，共${pageInfo.total}条数据。 每页
+                            <select class="form-control" onchange="changePageSize()" id="changePageSize">
+                                <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
+                                    <c:if test="${pageInfo.pageSize==rowNum}">
+                                        <option selected>${rowNum}</option>
+                                    </c:if>
+                                    <c:if test="${pageInfo.pageSize!=rowNum}">
+                                        <option>${rowNum}</option>
+                                    </c:if>
+                                </c:forEach>
+                            </select> 条
+                        </div>
+                    </div>
+
+                    <div class="box-tools pull-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
+                                <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
+                            </c:forEach>
+                            <li><a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/dailyIncome/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.box-footer-->
+
             </div>
+
         </section>
-        <!-- /.content -->
+        <!-- 正文区域 /-->
+
     </div>
-    <!-- /.content-wrapper -->
+    <!-- @@close -->
     <!-- 内容区域 /-->
 
     <!-- 底部导航 -->
@@ -252,90 +233,65 @@
 
 </div>
 
-<script
-        src="${pageContext.request.contextPath}/../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/raphael/raphael-min.js"></script>
+<script src="../plugins/morris/morris.min.js"></script>
+<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="../plugins/knob/jquery.knob.js"></script>
+<script src="../plugins/daterangepicker/moment.min.js"></script>
+<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
+<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
 <script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap/js/bootstrap.min.js"></script>
+        src="../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
 <script
-        src="${pageContext.request.contextPath}/../plugins/raphael/raphael-min.js"></script>
+        src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/adminLTE/js/app.min.js"></script>
+<script src="../plugins/treeTable/jquery.treetable.js"></script>
+<script src="../plugins/select2/select2.full.min.js"></script>
+<script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script
-        src="${pageContext.request.contextPath}/../plugins/morris/morris.min.js"></script>
+        src="../plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
+<script src="../plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script
-        src="${pageContext.request.contextPath}/../plugins/sparkline/jquery.sparkline.min.js"></script>
+        src="../plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
+<script src="../plugins/bootstrap-markdown/js/markdown.js"></script>
+<script src="../plugins/bootstrap-markdown/js/to-markdown.js"></script>
+<script src="../plugins/ckeditor/ckeditor.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.js"></script>
 <script
-        src="${pageContext.request.contextPath}/../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/knob/jquery.knob.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/daterangepicker/moment.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/daterangepicker/daterangepicker.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/datepicker/bootstrap-datepicker.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/fastclick/fastclick.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/iCheck/icheck.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/adminLTE/js/app.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/treeTable/jquery.treetable.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/select2/select2.full.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-markdown/js/markdown.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-markdown/js/to-markdown.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/ckeditor/ckeditor.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/input-mask/jquery.inputmask.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/datatables/jquery.dataTables.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/chartjs/Chart.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/flot/jquery.flot.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/flot/jquery.flot.resize.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/flot/jquery.flot.pie.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/flot/jquery.flot.categories.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/ionslider/ion.rangeSlider.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/../plugins/bootstrap-slider/bootstrap-slider.js"></script>
+        src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/chartjs/Chart.min.js"></script>
+<script src="../plugins/flot/jquery.flot.min.js"></script>
+<script src="../plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="../plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="../plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="../plugins/ionslider/ion.rangeSlider.min.js"></script>
+<script src="../plugins/bootstrap-slider/bootstrap-slider.js"></script>
 <script>
+
+    function changePageSize() {
+        //获取下拉框的值
+        var pageSize = $("#changePageSize").val();
+
+        //向服务器发送请求，改变没页显示条数
+        location.href = "${pageContext.request.contextPath}/dailyIncome/findAll?page=1&pageSize="
+            + pageSize;
+    }
+
     $(document).ready(function() {
         // 选择框
         $(".select2").select2();
@@ -355,10 +311,40 @@
         }
     }
 
-    $(document).ready(function() {
-        // 激活导航位置
-        setSidebarActive("admin-index");
-    });
+    $(document)
+        .ready(
+            function() {
+
+                // 激活导航位置
+                setSidebarActive("admin-datalist");
+
+                // 列表按钮
+                $("#dataList td input[type='checkbox']")
+                    .iCheck(
+                        {
+                            checkboxClass : 'icheckbox_square-blue',
+                            increaseArea : '20%'
+                        });
+                // 全选操作
+                $("#selall")
+                    .click(
+                        function() {
+                            var clicks = $(this).is(
+                                ':checked');
+                            if (!clicks) {
+                                $(
+                                    "#dataList td input[type='checkbox']")
+                                    .iCheck(
+                                        "uncheck");
+                            } else {
+                                $(
+                                    "#dataList td input[type='checkbox']")
+                                    .iCheck("check");
+                            }
+                            $(this).data("clicks",
+                                !clicks);
+                        });
+            });
 </script>
 </body>
 
