@@ -22,5 +22,12 @@ public interface ChukouDao {
     @Update("update outTime set outTime=#{outTime},fee =#{fee}")
     void updateRecord(Record record);
 
+    @Select("select id from car where carNumber=#{carNumber}")
+    Integer findIsVip(String carNumber);
 
+    @Select("select vipRate from fee")
+    Double findVipRate();
+
+    @Select("select commonRate from fee")
+    Double findCommonRate();
 }

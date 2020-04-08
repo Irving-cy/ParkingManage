@@ -51,11 +51,12 @@
 			</a>
 				<ul class="treeview-menu">
 
-					<li id="product-setting"><a
-						href="${pageContext.request.contextPath}/rukou/findAll?page=1&pageSize=${pageInfo.pageSize}">
-							<i class="fa fa-circle-o"></i> 入口管理
-					</a></li>
-					<li id="order-setting"><a
+					<li id="rukou-setting">
+						<a href="${pageContext.request.contextPath}/rukou/findAll?page=1&pageSize=${pageInfo.pageSize}">
+							<i class="fa fa-circle-o"></i>入口管理
+						</a>
+					</li>
+					<li id="chukou-setting"><a
 						href="${pageContext.request.contextPath}/chukou/findAll?page=1&pageSize=${pageInfo.pageSize}"> <i
 							class="fa fa-circle-o"></i> 出口管理
 					</a></li>

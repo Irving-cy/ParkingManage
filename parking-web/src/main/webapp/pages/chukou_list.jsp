@@ -108,7 +108,7 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/chukou/add'">
+                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/chukou/update'">
                                         <i class="fa fa-file-o"></i> 新建
                                     </button>
 
@@ -154,15 +154,15 @@
 
                                 <c:forEach items="${pageInfo.list}" var="record">
                                     <tr>
-<%--                                        <td><input name="ids" type="checkbox"></td>--%>
+                                        <td><input name="ids" type="checkbox"></td>
                                         <td>${record.id }</td>
                                         <td>${record.carNumber }</td>
-                                        <td>${record.inTime }</td>
-                                        <td>${record.outTime }</td>
+                                        <td>${record.inTimeStr }</td>
+                                        <td>${record.outTimeStr }</td>
                                         <td>${record.fee}</td>
-<%--                                        <td class="text-center">--%>
-<%--                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">结账</a>--%>
-<%--                                        </td>--%>
+                                        <td class="text-center">
+                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">结账</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -203,15 +203,15 @@
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="${pageContext.request.contextPath}/user/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
                             <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-                                <li><a href="${pageContext.request.contextPath}/user/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
                             </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/user/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>

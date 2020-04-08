@@ -85,7 +85,7 @@
                 <li><a href="${pageContext.request.contextPath}/index.jsp"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="${pageContext.request.contextPath}/rukou/finAll">入口管理</a></li>
+                        href="${pageContext.request.contextPath}/rukou/findAll">入口管理</a></li>
                 <li class="active">入库表单</li>
             </ol>
         </section>
@@ -103,19 +103,24 @@
                         <div class="col-md-2 title">编号</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="id"
-                                   placeholder="编号" value="${record.id}" readonly="readonly">
+                                   placeholder="编号"  readonly="readonly">
                         </div>
 
                         <div class="col-md-2 title">车牌号</div>
                         <div class="col-md-4 data">
                             <input type="text" class="form-control" name="carNumber"
-                                   placeholder="车牌号" value="${record.carNumber}">
+                                   placeholder="车牌号">
                         </div>
 
                         <div class="col-md-2 title">进入时间</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" name="inTime"
-                                   placeholder="进入时间" value="${record.inTime}">
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right"
+                                       id="datepicker-a3" name="inTime">
+                            </div>
                         </div>
                     </div>
                 </div>

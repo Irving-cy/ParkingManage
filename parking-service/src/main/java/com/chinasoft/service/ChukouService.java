@@ -1,5 +1,7 @@
 package com.chinasoft.service;
 
+import com.chinasoft.domain.Car;
+import com.chinasoft.domain.Fee;
 import com.chinasoft.domain.Record;
 
 import java.util.List;

@@ -28,7 +28,7 @@ public class chukouController {
         List<Record> list = chukouService.findAll(page,pageSize);
         //生成分页消息
         PageInfo<Record> pageInfo = new PageInfo<>(list);
-        mv.addObject("chukou_list",pageInfo);
+        mv.addObject("pageInfo",pageInfo);
         return mv;
     }
 
