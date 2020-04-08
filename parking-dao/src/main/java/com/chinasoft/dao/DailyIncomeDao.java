@@ -33,4 +33,11 @@ public interface DailyIncomeDao {
     @Select("select sum(f.fee) from (select fee from record where SUBSTRING(outTime,1,10) = #{time}) f")
     Double findFeeByTime(String time);
 
+    @Select("select " +
+            "(select name from user u where u.carNumber = r.carNumber) name," +
+            "r.carNumber,r.inTime,r.outTime," +
+            "(select roleName from role where id =(select role from user u where u.carNumber = r.carNumber)) type,r.fee " +
+            "from record r " +
+            "where SUBSTRING(outTime,1,10) between #{dTime} and #{fTime}")
+    List<Record> findBySearch(@Param("dTime") String dTime,@Param("fTime") String fTime);
 }

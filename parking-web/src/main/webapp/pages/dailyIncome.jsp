@@ -119,9 +119,13 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <form action="${pageContext.request.contextPath}/dailyIncome/search" method="post">
+                                <form action="${pageContext.request.contextPath}/dailyIncome/search?page=1&pageSize=${pageInfo.pageSize}" method="post">
                                     <div style="width:300px; height:30px;float:right">
-                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="" style="width:235px;height:30px;float:left">
+                                        <select name="search">
+                                            <option value="week">近一周</option>
+                                            <option value="month">近一月</option>
+                                            <option value="quarter">近一季</option>
+                                        </select>
                                         <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
                                             搜索
                                         </button>
@@ -148,28 +152,18 @@
                                 </thead>
                                 <tbody>
 
-                                <c:forEach items="${pageInfo.list}" var="dilyIncome">
+                                <c:forEach items="${pageInfo.list}" var="dailyIncome">
                                     <tr>
                                         <td><input name="ids" type="checkbox"></td>
-                                        <td>${dilyIncome.id}</td>
-                                        <td>${dilyIncome.timeStr}</td>
-                                        <td>${dilyIncome.income}</td>
+                                        <td>${dailyIncome.id}</td>
+                                        <td>${dailyIncome.timeStr}</td>
+                                        <td>${dailyIncome.income}</td>
                                         <td style="text-align: center">
-                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dilyIncome.time}'">详情</button>
+                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dailyIncome.time}&page=1&pageSize=${pageInfo.pageSize}'">详情</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
-                                <!--
-                            <tfoot>
-                            <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
-                            </tr>
-                            </tfoot>-->
                             </table>
                         </form>
 

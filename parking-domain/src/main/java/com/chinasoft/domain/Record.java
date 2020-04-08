@@ -10,6 +10,8 @@ public class Record {
 
     private Integer id;
 
+    private String name;
+
     private String carNumber;
 
     private Date inTime;
@@ -17,6 +19,8 @@ public class Record {
 
     private Date outTime;
     private String outTimeStr;
+
+    private String type;
 
     private Double fee;
 

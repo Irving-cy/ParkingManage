@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
          pageEncoding="UTF-8"%>
-<%@ page language="java" import="com.chinasoft.utils.DateUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -155,7 +154,7 @@
         <section class="content">
             <!--日报信息-->
             <div class="panel panel-default">
-                <div class="panel-heading">${DateUtils.date2String(time,"yyyy-MM-dd")} 车辆进出日报信息</div>
+                <div class="panel-heading">车辆进出日报信息</div>
                 <!--数据列表-->
                 <table id="dataList"
                        class="table table-bordered table-striped table-hover dataTable">
@@ -176,9 +175,9 @@
                                        readonly="readonly"></td>
                             <td><input type="text" size="10" value="${record.carNumber}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="17" value="${record.outTimeStr}"
+                            <td><input type="text" size="20" value="${record.outTimeStr}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="17" value="${record.inTimeStr}"
+                            <td><input type="text" size="20" value="${record.inTimeStr}"
                                        readonly="readonly"></td>
                             <td><input type="text" size="10" value="${record.type}"
                                        readonly="readonly"></td>

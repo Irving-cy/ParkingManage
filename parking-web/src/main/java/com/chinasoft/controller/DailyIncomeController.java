@@ -1,11 +1,9 @@
 package com.chinasoft.controller;
 
 
-import cn.hutool.core.date.DateUnit;
 import com.chinasoft.domain.DailyIncome;
 import com.chinasoft.domain.Record;
 import com.chinasoft.service.DailyIncomeService;
-import com.chinasoft.utils.DateUtils;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,13 +41,29 @@ public class DailyIncomeController {
     public ModelAndView findDetailByTime(@RequestParam(name = "page",defaultValue = "1") Integer page,
                                    @RequestParam(name = "pageSize",defaultValue = "5") Integer pageSize,
                                     @RequestParam("time") Date time){
-        List<Record> lists = dailyIncomeService.findDetailByTime(page,pageSize,time);
         ModelAndView mv = new ModelAndView();
+        List<Record> lists = dailyIncomeService.findDetailByTime(page,pageSize,time);
+        mv.addObject("time",time);
         mv.setViewName("dailyIncomeDetail");
         //生成分页信息
         PageInfo<Record> pageInfo = new PageInfo<>(lists);
         mv.addObject("pageInfo",pageInfo);
-        mv.addObject("time",time);
+        return mv;
+    }
+
+    //模糊查询
+    @RequestMapping("search")
+    public ModelAndView search(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                               @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
+                               @RequestParam(value = "search") String search){
+        ModelAndView mv=new ModelAndView();
+        List<Record> lists = dailyIncomeService.search(page,pageSize,search);
+        mv.addObject("search",search);
+        mv.addObject("time",System.currentTimeMillis());
+        mv.setViewName("dailyIncomeDetail");
+        //生成分页消息
+        PageInfo<Record> pageInfo=new PageInfo<>(lists);
+        mv.addObject("pageInfo",pageInfo);
         return mv;
     }
 

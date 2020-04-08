@@ -1,8 +1,6 @@
 package com.chinasoft.service.impl;
 
 import com.chinasoft.dao.DailyIncomeDao;
-import com.chinasoft.dao.RecordDao;
-import com.chinasoft.dao.UserDao;
 import com.chinasoft.domain.DailyIncome;
 import com.chinasoft.domain.Record;
 import com.chinasoft.service.DailyIncomeService;
@@ -11,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -52,6 +51,35 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
             rec.setOutTimeStr(DateUtils.date2String(rec.getOutTime(),"yyyy-MM-dd HH:mm"));
         }
         return detail;
+    }
+
+    @Override
+    public List<Record> search(Integer page, Integer pageSize, String search) {
+        //表示开始分页
+        PageHelper.startPage(page,pageSize);
+
+        Calendar c = Calendar.getInstance();
+        String dTime = DateUtils.date2String(c.getTime(),"yyyy-MM-dd");
+        switch (search){
+            case "week":
+                c.add(Calendar.DAY_OF_WEEK,-7);
+                break;
+            case "month":
+                c.add(Calendar.MONTH,-1);
+                break;
+            case "quarter":
+                c.add(Calendar.MONTH,-3);
+                break;
+        }
+        String fTime = DateUtils.date2String(c.getTime(),"yyyy-MM-dd");
+
+        List<Record> too = dailyIncomeDao.findBySearch(dTime,fTime);
+
+        for (Record record : too) {
+            System.out.println("----  "+record);
+        }
+
+        return too;
     }
 
 }
