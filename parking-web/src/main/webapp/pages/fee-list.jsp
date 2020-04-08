@@ -286,34 +286,34 @@
                 <!-- /.box-body -->
 
                 <!-- .box-footer-->
-                <div class="box-footer">
-                    <div class="pull-left">
-                        <div class="form-group form-inline">
-                            总共 1 页，共 6 条数据。 每页 <select class="form-control" onchange="changePageSize()" id="changePageSize">
-<%--                            <c:forEach begin="0" end="${pageInfo.total}" var="total">--%>
-<%--                                <option>${total}</option>--%>
-<%--                            </c:forEach>--%>
-                            <option>6</option>
-                        </select> 条
-                        </div>
-                    </div>
+<%--                <div class="box-footer">--%>
+<%--                    <div class="pull-left">--%>
+<%--                        <div class="form-group form-inline">--%>
+<%--                            总共 1 页，共 6 条数据。 每页 <select class="form-control" onchange="changePageSize()" id="changePageSize">--%>
+<%--&lt;%&ndash;                            <c:forEach begin="0" end="${pageInfo.total}" var="total">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <option>${total}</option>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </c:forEach>&ndash;%&gt;--%>
+<%--                            <option>6</option>--%>
+<%--                        </select> 条--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-                    <div class="box-tools pull-right">
-                        <ul class="pagination">
-                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
-<%--                            <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">--%>
-<%--                                <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>--%>
-<%--                            </c:forEach>--%>
-                            <li><a>1</a></li>
-                            <li><a>2</a></li>
-                            <li><a>3</a></li>
-                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
-                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
-                        </ul>
-                    </div>
+<%--                    <div class="box-tools pull-right">--%>
+<%--                        <ul class="pagination">--%>
+<%--                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>--%>
+<%--                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>--%>
+<%--&lt;%&ndash;                            <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </c:forEach>&ndash;%&gt;--%>
+<%--                            <li><a>1</a></li>--%>
+<%--                            <li><a>2</a></li>--%>
+<%--                            <li><a>3</a></li>--%>
+<%--                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>--%>
+<%--                            <li><a href="${pageContext.request.contextPath}/product/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
 
-                </div>
+<%--                </div>--%>
                 <!-- /.box-footer-->
 
 
