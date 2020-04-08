@@ -50,8 +50,4 @@ public interface UserDao {
     @Select("SELECT * from user WHERE name LIKE #{search}")
     List<UserInfo> search(String search);
 
-
-    //--? zlx ?--//
-    @Select("select f.vipCost*a.num cost from fee f,(select role,COUNT(role) num from user where SUBSTRING(createTime,1,10) = #{time} group by role) a where f.id = a.role")
-    Double findVIPCost(String time);
 }

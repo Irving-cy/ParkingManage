@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
          pageEncoding="UTF-8"%>
+<%@ page language="java" import="com.chinasoft.utils.DateUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -154,7 +155,7 @@
         <section class="content">
             <!--日报信息-->
             <div class="panel panel-default">
-                <div class="panel-heading">${time} 车辆进出日报信息</div>
+                <div class="panel-heading">${DateUtils.date2String(time,"yyyy-MM-dd")} 车辆进出日报信息</div>
                 <!--数据列表-->
                 <table id="dataList"
                        class="table table-bordered table-striped table-hover dataTable">
@@ -171,16 +172,17 @@
                     <tbody>
                     <c:forEach var="record" items="${pageInfo.list}">
                         <tr>
-                            <td>${record.user.name}</td>
+                            <td><input type="text" size="10" value="${record.name}"
+                                       readonly="readonly"></td>
                             <td><input type="text" size="10" value="${record.carNumber}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="10" value="${record.outTime}"
+                            <td><input type="text" size="17" value="${record.outTimeStr}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="20" value="${record.inTime}"
+                            <td><input type="text" size="17" value="${record.inTimeStr}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="15" value="${record.type}"
+                            <td><input type="text" size="10" value="${record.type}"
                                        readonly="readonly"></td>
-                            <td><input type="text" size="28" value="${record.fee}"
+                            <td><input type="text" size="25" value="${record.fee}元"
                                        readonly="readonly"></td>
                         </tr>
                     </c:forEach>
@@ -214,25 +216,21 @@
                 <div class="box-tools pull-right">
                     <ul class="pagination">
                         <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
-                            time=${time}&page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
-                            time=${time}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a></li>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a>
+                        </li>
                         <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
                             <li>
-                                <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
-                                ${time}&page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a>
+                                <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a>
                             </li>
                         </c:forEach>
                         <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
-                            ${time}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?
-                            ${time}&page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
+                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
                         </li>
                     </ul>
                 </div>

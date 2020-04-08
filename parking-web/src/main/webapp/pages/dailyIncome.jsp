@@ -145,14 +145,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Simple Tables
-                <small>preview of simple tables</small>
+                收入统计
+                <small></small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Simple</li>
-            </ol>
         </section>
 
         <!-- Main content -->
@@ -179,18 +174,18 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tr>
-                                    <th>编号</th>
+                                    <th><input id="selall" type="checkbox" class="icheckbox_square-blue"></th>
                                     <th>时间</th>
                                     <th>今日总计</th>
                                     <th>明细</th>
                                 </tr>
                                 <c:forEach items="${pageInfo.list}" var="dilyIncome">
                                     <tr>
-                                        <td>${dilyIncome.id}</td>        <%--    --%>
-                                        <td>${dilyIncome.timeStr}</td>        <%--    --%>
-                                        <td>${dilyIncome.income}</td>        <%--    --%>
+                                        <td><input name="ids" type="checkbox"></td>
+                                        <td>${dilyIncome.timeStr}</td>
+                                        <td>${dilyIncome.income}</td>
                                         <td>
-                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dilyIncome.time}'">详情</button>
+                                            <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${dilyIncome.time}&page=1&pageSize=${pageInfo.pageSize}'">详情</button>
                                         </td>
                                     </tr>
                                 </c:forEach>

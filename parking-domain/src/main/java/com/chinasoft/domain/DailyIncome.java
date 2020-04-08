@@ -16,8 +16,6 @@ public class DailyIncome {
 
     private Double income;
 
-    private Record record;
-
     public String getTimeStr() {
         if (time == null) return "";
         return DateUtils.date2String(time,"yyyy-MM-dd");
