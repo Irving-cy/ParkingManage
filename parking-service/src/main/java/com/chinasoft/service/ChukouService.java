@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ChukouService {
 
-    List<Record> findAll(Integer page, Integer pageSize);
+    List<Record> findAll(Integer page,Integer pageSize);
 
     void updateRecord(Record record);
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RukouService {
 
-    List<Record> findAll(Integer page, Integer pageSize);
+    List<Record> findAll(Integer page,Integer pageSize);
 
     void addRecord(Record record);
 

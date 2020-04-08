@@ -23,16 +23,16 @@ public class rukouController {
      * 查询所有
      * @return
      */
-    @RequestMapping("findAll")
+    @RequestMapping("finAll")
     public ModelAndView findAll(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                 @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize
     ){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("rukou_list");
+        mv.setViewName("rukou-list");
         List<Record> list = rukouService.findAll(page,pageSize);
         //生成分页消息
         PageInfo<Record> pageInfo = new PageInfo<>(list);
-        mv.addObject("pageInfo",pageInfo);
+        mv.addObject("rukouList",pageInfo);
         return mv;
     }
 
