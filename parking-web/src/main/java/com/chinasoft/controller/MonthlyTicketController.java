@@ -25,22 +25,26 @@ public class MonthlyTicketController {
     private MonthlyTicketService service;
 
     /**
-     * 查询所有
+     * 查询所有 / 带条件查询
      * @return
      */
     @RequestMapping("findAll")
     public ModelAndView findAll(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                 @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
-                                HttpServletRequest request){
+                                String carNum, String ownerName
+//                                HttpServletRequest request
+    ){
 
-        String carNum = request.getParameter("carNum");
-        String ownerName = request.getParameter("ownerName");
+//        String carNum = request.getParameter("carNum");
+//        String ownerName = request.getParameter("ownerName");
 
         ModelAndView mv = new ModelAndView();
         mv.setViewName("car-list");
         List<Car> list = service.findAll(page, pageSize ,carNum ,ownerName);
         PageInfo<Car> pageInfo = new PageInfo<>(list);
         mv.addObject("pageInfo",pageInfo);
+        mv.addObject("carNum",carNum);
+        mv.addObject("ownerName",ownerName);
         return mv;
     }
 

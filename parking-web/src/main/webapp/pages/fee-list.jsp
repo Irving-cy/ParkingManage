@@ -165,12 +165,12 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理 <small>数据列表</small>
+                费率设置 <small>费率数据</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="#">费率设置</a></li>
+                <li class="active">费率数据</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -193,30 +193,22 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default" title="新建"
-                                            onclick="location.href='${pageContext.request.contextPath}/product/add'">
-                                        <i class="fa fa-file-o"></i> 新建
+                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/fee/findAll'">
+                                        <i class="fa fa-refresh"></i> 刷新
                                     </button>
-                                    <button type="button" class="btn btn-default" title="删除">
-                                        <i class="fa fa-trash-o"></i> 删除
-                                    </button>
-<%--                                    <button type="button" class="btn btn-default" title="开启">--%>
-<%--                                        <i class="fa fa-check"></i> 开启--%>
-<%--                                    </button>--%>
-<%--                                    <button type="button" class="btn btn-default" title="屏蔽">--%>
-<%--                                        <i class="fa fa-ban"></i> 屏蔽--%>
-<%--                                    </button>--%>
-<%--                                    <button type="button" class="btn btn-default" title="刷新">--%>
-<%--                                        <i class="fa fa-refresh"></i> 刷新--%>
-<%--                                    </button>--%>
                                 </div>
                             </div>
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <input type="text" class="form-control input-sm"
-                                       placeholder="搜索"> <span
-                                    class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <form action="#" method="post">
+                                    <div style="width:300px; height:30px;float:right">
+                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="" style="width:235px;height:30px;float:left">
+                                        <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+                                            搜索
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <!--工具栏/-->
@@ -257,7 +249,7 @@
 <%--                                        <button type="button" class="btn bg-olive btn-xs">订单</button>--%>
 <%--                                        <button type="button" class="btn bg-olive btn-xs">详情</button>--%>
                                         <a href="${pageContext.request.contextPath}/fee/findFeeById?id=${fee.id}">
-                                            <button type="button" class="btn bg-olive btn-xs">编辑</button>
+                                            <button type="button" class="btn bg-olive btn-xs">修改</button>
                                         </a>
 <%--                                        <button type="button" class="btn bg-olive btn-xs">编辑</button>--%>
 <%--                                        <button type="button" class="btn bg-olive btn-xs">删除</button>--%>

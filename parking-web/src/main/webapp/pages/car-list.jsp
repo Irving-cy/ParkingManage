@@ -13,7 +13,7 @@
 
 
 
-    <title>数据 - AdminLTE2定制版</title>
+    <title>月票管理</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
 
@@ -94,12 +94,12 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                数据管理 <small>数据列表</small>
+                月票管理 <small>月票数据</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
-                <li class="active">数据列表</li>
+                <li><a href="#">月票管理</a></li>
+                <li class="active">月票数据</li>
             </ol>
         </section>
         <!-- 内容头部 /-->
@@ -120,24 +120,52 @@
 
                         <!--工具栏-->
                         <div class="pull-left">
-                            <form method="post" action="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}">
-                                <div class="has-feedback">
-                                    <input type="text" name="carNum" class="form-control input-sm" placeholder="车牌号">&emsp;
-                                    <input type="text" name="ownerName" class="form-control input-sm" placeholder="车主姓名">&emsp;
-                                    <b><input type="submit" style="color: green;font-size: 15px;text-align: center" class="form-control input-sm" value="查    询"></b>&emsp;
+                            <div class="form-group form-inline">
+                                <div class="btn-group">
+<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
+<%--                                        <i class="fa fa-file-o"></i> 新建--%>
+<%--                                    </button>--%>
+                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/monthlyTicket/findAll'">
+                                        <i class="fa fa-refresh"></i> 刷新
+                                    </button>
                                 </div>
-
-                            </form>
-
+                            </div>
                         </div>
                         <div class="box-tools pull-right">
-<%--                            <div class="has-feedback">--%>
-<%--                                <input type="text" class="form-control input-sm"--%>
-<%--                                       placeholder="车主姓名"> <span--%>
-<%--                                    class="glyphicon glyphicon-search form-control-feedback"></span>--%>
-<%--                            </div>--%>
+                            <div class="has-feedback">
+                                <form action="${pageContext.request.contextPath}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}" method="post">
+                                    <div style="width:540px; height:30px;float:right">
+                                        <input type="text" class="form-control input-sm" name="carNum" value="" id="carNum" placeholder="车牌号" style="width:235px;height:30px;float:left">
+                                        <input type="text" class="form-control input-sm" name="ownerName" value="" id="ownerName" placeholder="车主姓名" style="width:235px;height:30px;float:left">
+                                        <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
+                                            搜索
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <!--工具栏/-->
+
+<%--                        <!--工具栏-->--%>
+<%--                        <div class="pull-left">--%>
+<%--                            <form method="post" action="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}">--%>
+<%--                                <div class="has-feedback">--%>
+<%--                                    <input type="text" name="carNum" class="form-control input-sm" placeholder="车牌号">&emsp;--%>
+<%--                                    <input type="text" name="ownerName" class="form-control input-sm" placeholder="车主姓名">&emsp;--%>
+<%--                                    <b><input type="submit" style="color: green;font-size: 15px;text-align: center" class="form-control input-sm" value="查    询"></b>&emsp;--%>
+<%--                                </div>--%>
+
+<%--                            </form>--%>
+
+<%--                        </div>--%>
+<%--                        <div class="box-tools pull-right">--%>
+<%--&lt;%&ndash;                            <div class="has-feedback">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <input type="text" class="form-control input-sm"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                       placeholder="车主姓名"> <span&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    class="glyphicon glyphicon-search form-control-feedback"></span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
+<%--                        </div>--%>
+<%--                        <!--工具栏/-->--%>
 
                         <!--数据列表-->
                         <table id="dataList"
@@ -147,15 +175,15 @@
                                 <th class="" style="padding-right: 0px;"><input
                                         id="selall" type="checkbox" class="icheckbox_square-blue">
                                 </th>
-                                <th class="sorting_asc">车牌号</th>
-                                <th class="sorting_desc">车主姓名</th>
-                                <th class="sorting_asc sorting_asc_disabled">到期日期</th>
+                                <th>车牌号</th>
+                                <th>车主姓名</th>
+                                <th>到期日期</th>
 <%--                                <th class="sorting_desc sorting_desc_disabled">出发城市</th>--%>
 <%--                                <th class="sorting">出发时间</th>--%>
 <%--                                <th class="text-center sorting">产品价格</th>--%>
 <%--                                <th class="sorting">产品描述</th>--%>
 <%--                                <th class="text-center sorting">状态</th>--%>
-<%--                                <th class="text-center">操作</th>--%>
+                                <th class="text-center">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -168,10 +196,10 @@
                                     <td>${Car.carNumber }</td>
                                     <td>${Car.carOwnerName }</td>
                                     <td>${Car.expireDateStr }</td>
-                                    <td>
+                                    <td style="text-align: center">
 <%--                                        <button type="button" class="btn bg-olive btn-xs">订单</button>--%>
 <%--                                        <button type="button" class="btn bg-olive btn-xs">详情</button>--%>
-                                        <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${path}/monthlyTicket/toUpdate?id=${Car.id}'">会员续费(暂未实现)</button>
+                                        <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${path}/monthlyTicket/toUpdate?id=${Car.id}'">会员续费</button>
                                     </td>
                                 </tr>
                             </c:forEach>
