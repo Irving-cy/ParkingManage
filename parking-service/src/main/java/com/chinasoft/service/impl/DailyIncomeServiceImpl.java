@@ -29,7 +29,13 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
         for (DailyIncome dailyIncome : lists) {
             String time = dailyIncome.getTimeStr();
             //查询record表的fee的信息  或者调用RecordDao里面的方法获取fee的值
-            Double todayIncome = dailyIncomeDao.findFeeByTime(time);
+            Double todayIncome;
+            if(dailyIncomeDao.findFeeByTime(time) == null){
+                todayIncome = 0.0;
+            }else {
+                todayIncome = dailyIncomeDao.findFeeByTime(time);
+            }
+//            Double todayIncome = dailyIncomeDao.findFeeByTime(time);
             //查询并计算今天的月票收入
             Double vipIncome = dailyIncomeDao.findVipCostByTime(time) * dailyIncomeDao.findVipCost();
             //将算得的数据更新到数据库
