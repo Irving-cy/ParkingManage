@@ -159,7 +159,7 @@
                                         <td>${record.outTimeStr }</td>
                                         <td>${record.fee}</td>
                                         <td class="text-center">
-                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">结账</a>
+                                            <a href="#" class="btn bg-olive btn-xs">结账</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -155,7 +155,7 @@
                                         <td>${record.carNumber }</td>
                                         <td>${record.inTimeStr }</td>
                                         <td class="text-center">
-                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">办理月票</a>
+                                            <a href="#" class="btn bg-olive btn-xs">办理月票</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
