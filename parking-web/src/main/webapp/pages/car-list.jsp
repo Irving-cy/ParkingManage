@@ -199,7 +199,7 @@
                                     <td style="text-align: center">
 <%--                                        <button type="button" class="btn bg-olive btn-xs">订单</button>--%>
 <%--                                        <button type="button" class="btn bg-olive btn-xs">详情</button>--%>
-                                        <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${path}/monthlyTicket/toUpdate?id=${Car.id}'">会员续费</button>
+                                        <button type="button" class="btn bg-olive btn-xs" onclick="location.href='#'">会员续费</button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -266,13 +266,13 @@
 
                     <div class="box-tools pull-right">
                         <ul class="pagination" >
-                            <li><a href="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum<=1?1:pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=1&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}" aria-label="Previous">首页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum<=1?1:pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">上一页</a></li>
                             <c:forEach begin="1" end="${pageInfo.pages}" var="pageNo">
-                                <li><a href="${path}/monthlyTicket/findAll?page=${pageNo}&pageSize=${pageInfo.pageSize}">${pageNo}</a></li>
+                                <li><a href="${path}/monthlyTicket/findAll?page=${pageNo}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">${pageNo}</a></li>
                             </c:forEach>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum>=pageInfo.pages?pageInfo.pages:pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
-                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pageNum>=pageInfo.pages?pageInfo.pages:pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}">下一页</a></li>
+                            <li><a href="${path}/monthlyTicket/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}&carNum=${carNum}&ownerName=${ownerName}" aria-label="Next">尾页</a></li>
                         </ul>
                     </div>
 
@@ -392,7 +392,7 @@
         var pageSize = $("#changePageSize").val();
         //向服务器发送请求，改变没页显示条数
         location.href = "${path}/monthlyTicket/findAll?page=1&pageSize="
-            + pageSize;
+            + pageSize + "&carNum=${carNum}&ownerName=${ownerName}";
     }
 
     $(document).ready(function() {
