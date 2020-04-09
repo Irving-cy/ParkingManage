@@ -72,12 +72,7 @@ public class DailyIncomeServiceImpl implements DailyIncomeService{
                 break;
         }
         String fTime = DateUtils.date2String(c.getTime(),"yyyy-MM-dd");
-
-        List<Record> too = dailyIncomeDao.findBySearch(dTime,fTime);
-
-        for (Record record : too) {
-            System.out.println("----  "+record);
-        }
+        List<Record> too = dailyIncomeDao.findBySearch(fTime,dTime);
 
         return too;
     }

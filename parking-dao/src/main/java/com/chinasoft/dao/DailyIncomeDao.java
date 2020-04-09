@@ -38,6 +38,6 @@ public interface DailyIncomeDao {
             "r.carNumber,r.inTime,r.outTime," +
             "(select roleName from role where id =(select role from user u where u.carNumber = r.carNumber)) type,r.fee " +
             "from record r " +
-            "where SUBSTRING(outTime,1,10) between #{dTime} and #{fTime}")
-    List<Record> findBySearch(@Param("dTime") String dTime,@Param("fTime") String fTime);
+            "where SUBSTRING(outTime,1,10) between #{fTime} and #{dTime}")
+    List<Record> findBySearch(@Param("fTime") String fTime,@Param("dTime") String dTime);
 }
