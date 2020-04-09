@@ -192,50 +192,52 @@
                 <!--数据列表/-->
             </div>
             <!--日报信息/-->
-            <!-- .box-footer-->
-            <div class="box-footer">
-                <div class="pull-left">
-                    <div class="form-group form-inline">
-                        总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
-                        <select class="form-control" onchange="changePageSize()" id="changePageSize">
-                            <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">
-                                <option>
-                                    <c:if test="${pageInfo.pageSize == rowNum}">
-                                        ${rowNum}
-                                    </c:if>
-                                    <c:if test="${pageInfo.pageSize != rowNum}">
-                                        ${rowNum}
-                                    </c:if>
-                                </option>
-                            </c:forEach>
-                        </select> 条
-                    </div>
-                </div>
 
-                <div class="box-tools pull-right">
-                    <ul class="pagination">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a>
-                        </li>
-                        <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a>
-                            </li>
-                        </c:forEach>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>
-                        </li>
-                    </ul>
-                </div>
+<%--            <!-- .box-footer-->--%>
+<%--            <div class="box-footer">--%>
+<%--                <div class="pull-left">--%>
+<%--                    <div class="form-group form-inline">--%>
+<%--                        总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页--%>
+<%--                        <select class="form-control" onchange="changePageSize()" id="changePageSize">--%>
+<%--                            <c:forEach begin="1" end="${pageInfo.total>5?5:pageInfo.total}" var="rowNum">--%>
+<%--                                <option>--%>
+<%--                                    <c:if test="${pageInfo.pageSize == rowNum}">--%>
+<%--                                        ${rowNum}--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${pageInfo.pageSize != rowNum}">--%>
+<%--                                        ${rowNum}--%>
+<%--                                    </c:if>--%>
+<%--                                </option>--%>
+<%--                            </c:forEach>--%>
+<%--                        </select> 条--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-            </div>
-            <!-- /.box-footer-->
+<%--                <div class="box-tools pull-right">--%>
+<%--                    <ul class="pagination">--%>
+<%--                        <li>--%>
+<%--                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=1&pageSize=${pageInfo.total}" aria-label="Previous">首页</a>--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum-1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">上一页</a>--%>
+<%--                        </li>--%>
+<%--                        <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">--%>
+<%--                            <li>--%>
+<%--                                <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pNum}&pageSize=${pageInfo.total>5?5:pageInfo.total}">${pNum}</a>--%>
+<%--                            </li>--%>
+<%--                        </c:forEach>--%>
+<%--                        <li>--%>
+<%--                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pageNum+1}&pageSize=${pageInfo.total>5?5:pageInfo.total}">下一页</a>--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <a href="${pageContext.request.contextPath}/dailyIncome/findDetailByTime?time=${time}&page=${pageInfo.pages}&pageSize=${pageInfo.total>5?5:pageInfo.total}" aria-label="Next">尾页</a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+
+<%--            </div>--%>
+<%--            <!-- /.box-footer-->--%>
+
             <!--工具栏-->
             <div class="box-tools text-center">
 
