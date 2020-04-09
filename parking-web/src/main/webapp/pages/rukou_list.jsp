@@ -121,7 +121,7 @@
                             <div class="has-feedback">
                                 <form action="${pageContext.request.contextPath}/rukou/search" method="post">
                                     <div style="width:300px; height:30px;float:right">
-                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="" style="width:235px;height:30px;float:left">
+                                        <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="车牌号" style="width:235px;height:30px;float:left">
                                         <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
                                             搜索
                                         </button>

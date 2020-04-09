@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>出口管理</title>
+    <title>入口管理</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
 
@@ -79,13 +79,13 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                出口管理 <small>车辆信息</small>
+                入口管理 <small>车辆信息</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i
                         class="fa fa-dashboard"></i> 首页</a></li>
                 <li><a
-                        href="#">出口管理</a></li>
+                        href="#">入口管理</a></li>
 
                 <li class="active">车辆信息</li>
             </ol>
@@ -108,10 +108,10 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
-<%--                                        <i class="fa fa-file-o"></i> 新建--%>
-<%--                                    </button>--%>
-                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/chukou/findAll'">
+                                    <%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
+                                    <%--                                        <i class="fa fa-file-o"></i> 新建--%>
+                                    <%--                                    </button>--%>
+                                    <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/rukou/findAll'">
                                         <i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <form action="${pageContext.request.contextPath}/chukou/search" method="post">
+                                <form action="${pageContext.request.contextPath}/rukou/search" method="post">
                                     <div style="width:300px; height:30px;float:right">
                                         <input type="text" class="form-control input-sm" name="search" value="" id="search" placeholder="车牌号" style="width:235px;height:30px;float:left">
                                         <button type="submit" class="btn btn-default" value="" style="width:60px;height:30px;">
@@ -143,8 +143,6 @@
                                     <th>ID</th>
                                     <th>车牌号</th>
                                     <th>进入时间</th>
-                                    <th>离开时间</th>
-                                    <th>停车费用</th>
                                     <th style="text-align: center">操作</th>
                                 </tr>
                                 </thead>
@@ -156,10 +154,8 @@
                                         <td>${record.id }</td>
                                         <td>${record.carNumber }</td>
                                         <td>${record.inTimeStr }</td>
-                                        <td>${record.outTimeStr }</td>
-                                        <td>${record.fee}</td>
                                         <td class="text-center">
-                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">结账</a>
+                                            <a href="${pageContext.request.contextPath}/record/addRecord?carNumber=${record.carNumber}" class="btn bg-olive btn-xs">办理月票</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -201,15 +197,15 @@
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+                                <a href="${pageContext.request.contextPath}/rukou/search?page=1&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/rukou/search?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}&search=${search}">上一页</a></li>
                             <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-                                <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/rukou/search?page=${pNum}&pageSize=${pageInfo.pageSize}&search=${search}">${pNum}</a></li>
                             </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/rukou/search?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}&search=${search}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/rukou/search?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>
@@ -287,7 +283,7 @@
         var pageSize = $("#changePageSize").val();
 
         //向服务器发送请求，改变没页显示条数
-        location.href = "${pageContext.request.contextPath}/chukou/findAll?page=1&pageSize="
+        location.href = "${pageContext.request.contextPath}/rukou/findAll?page=1&pageSize="
             + pageSize;
     }
 

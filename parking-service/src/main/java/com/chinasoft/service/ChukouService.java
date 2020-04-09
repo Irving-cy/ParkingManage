@@ -8,9 +8,11 @@ public interface ChukouService {
 
     List<Record> findAll(Integer page, Integer pageSize);
 
-    void updateRecord(Record record);
+    List<Record> search(Integer page, Integer pageSize, String search);
 
-    void getFee();
+//    void updateRecord(Record record);
+//
+//    void getFee();
 
 
 }

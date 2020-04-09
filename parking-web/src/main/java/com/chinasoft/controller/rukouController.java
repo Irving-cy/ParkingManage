@@ -42,4 +42,25 @@ public class rukouController {
         return "rukou_update";
     }
 
+    /**
+     * 根据用户名模糊查询,并分页显示
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "search")
+    public ModelAndView search(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                               @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
+                               @RequestParam(value = "search") String search
+    ){
+        ModelAndView mv=new ModelAndView();
+        //生成分页消息
+        List<Record> lists = rukouService.search(page,pageSize,search);
+        PageInfo<Record> pageInfo=new PageInfo<>(lists);
+        mv.addObject("pageInfo",pageInfo);
+        mv.addObject("search",search);
+        mv.setViewName("rukou-search");
+        return mv;
+    }
+
 }

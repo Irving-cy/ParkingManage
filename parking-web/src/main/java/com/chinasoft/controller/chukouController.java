@@ -32,12 +32,25 @@ public class chukouController {
         return mv;
     }
 
-    @RequestMapping("update")
-    public String updateRecord(Record record){
-        chukouService.updateRecord(record);
-        return "chukou_update";
+//    @RequestMapping("update")
+//    public String updateRecord(Record record){
+//        chukouService.updateRecord(record);
+//        return "chukou_update";
+//    }
+
+    @RequestMapping(value = "search")
+    public ModelAndView search(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                               @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
+                               @RequestParam(value = "search") String search
+    ){
+        ModelAndView mv=new ModelAndView();
+        //生成分页消息
+        List<Record> lists = chukouService.search(page,pageSize,search);
+        PageInfo<Record> pageInfo=new PageInfo<>(lists);
+        mv.addObject("pageInfo",pageInfo);
+        mv.addObject("search",search);
+        mv.setViewName("chukou-search");
+        return mv;
     }
-
-
 
 }
