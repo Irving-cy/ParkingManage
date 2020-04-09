@@ -23,4 +23,6 @@ public interface RukouDao {
     void addRecord(Record record);
 
 
+    @Select("SELECT * from record WHERE carNumber LIKE #{search}")
+    List<Record> search(String searchStr);
 }

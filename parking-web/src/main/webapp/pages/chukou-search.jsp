@@ -108,9 +108,9 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-<%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
-<%--                                        <i class="fa fa-file-o"></i> 新建--%>
-<%--                                    </button>--%>
+                                    <%--                                    <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/user/add'">--%>
+                                    <%--                                        <i class="fa fa-file-o"></i> 新建--%>
+                                    <%--                                    </button>--%>
                                     <button type="button" class="btn btn-default" title="刷新" onclick="location.href='${pageContext.request.contextPath}/chukou/findAll'">
                                         <i class="fa fa-refresh"></i> 刷新
                                     </button>
@@ -201,15 +201,15 @@
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+                                <a href="${pageContext.request.contextPath}/chukou/search?page=1&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/chukou/search?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}&search=${search}">上一页</a></li>
                             <c:forEach begin="1" end="${pageInfo.pages}" var="pNum">
-                                <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pNum}&pageSize=${pageInfo.pageSize}">${pNum}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/chukou/search?page=${pNum}&pageSize=${pageInfo.pageSize}&search=${search}">${pNum}</a></li>
                             </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/chukou/search?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}&search=${search}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/chukou/findAll?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/chukou/search?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}&search=${search}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>

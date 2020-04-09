@@ -11,4 +11,5 @@ public interface RukouService {
     void addRecord(Record record);
 
 
+    List<Record> search(Integer page, Integer pageSize, String search);
 }

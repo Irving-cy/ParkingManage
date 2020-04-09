@@ -56,25 +56,39 @@ public class ChukouServiceImpl implements ChukouService {
                 Double vipRate = chukouDao.findVipRate();
                 Double commonRate = chukouDao.findCommonRate();
 
-                if (isVip > 0){
-                    Date expireTime = chukouDao.findExpireTime(list.getCarNumber());
-                    if(expireTime.after(list.getOutTime())){
-                        list.setFee(totalHour * vipRate);
-                        if(list.getFee() == null){
-                            chukouDao.saveFee(totalHour * vipRate, list.getCarNumber());
-                        }
-                    }else {
-                        list.setFee(totalHour * commonRate);
-                        if(list.getFee() == null){
-                            chukouDao.saveFee(totalHour * commonRate, list.getCarNumber());
-                        }
-                    }
-                } else {
+                if(isVip == null){
                     list.setFee(totalHour * commonRate);
-                    if(list.getFee() == null){
+                    chukouDao.saveFee(totalHour * commonRate, list.getCarNumber());
+                }else {
+                    Date expireTime = chukouDao.findExpireTime(list.getCarNumber());
+                    if(expireTime.before(list.getOutTime())){
+                        list.setFee(totalHour * commonRate);
                         chukouDao.saveFee(totalHour * commonRate, list.getCarNumber());
+                    }else {
+                        list.setFee(totalHour * vipRate);
+                        chukouDao.saveFee(totalHour * vipRate, list.getCarNumber());
                     }
                 }
+
+//                if (isVip > 0){
+//                    Date expireTime = chukouDao.findExpireTime(list.getCarNumber());
+//                    if(expireTime.after(list.getOutTime())){
+//                        list.setFee(totalHour * vipRate);
+//                        if(list.getFee() == null){
+//                            chukouDao.saveFee(totalHour * vipRate, list.getCarNumber());
+//                        }
+//                    }else {
+//                        list.setFee(totalHour * commonRate);
+//                        if(list.getFee() == null){
+//                            chukouDao.saveFee(totalHour * commonRate, list.getCarNumber());
+//                        }
+//                    }
+//                } else {
+//                    list.setFee(totalHour * commonRate);
+//                    if(list.getFee() == null){
+//                        chukouDao.saveFee(totalHour * commonRate, list.getCarNumber());
+//                    }
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -82,25 +96,32 @@ public class ChukouServiceImpl implements ChukouService {
         return lists;
     }
 
-    /**
-     * 更新记录表信息
-     * @param record
-     */
     @Override
-    public void updateRecord(Record record) {
-        record.setOutTime(record.getOutTime());
-        record.setFee(record.getFee());
-        chukouDao.updateRecord(record);
+    public List<Record> search(Integer page, Integer pageSize, String search) {
+        PageHelper.startPage(page,pageSize);
+        String searchStr = "%"+search+"%";
+        return chukouDao.search(searchStr);
     }
 
-    /**
-     * 计算费用
-     */
-    @Override
-    public void getFee() {
-
-
-    }
+//    /**
+//     * 更新记录表信息
+//     * @param record
+//     */
+//    @Override
+//    public void updateRecord(Record record) {
+//        record.setOutTime(record.getOutTime());
+//        record.setFee(record.getFee());
+//        chukouDao.updateRecord(record);
+//    }
+//
+//    /**
+//     * 计算费用
+//     */
+//    @Override
+//    public void getFee() {
+//
+//
+//    }
 
 
 }

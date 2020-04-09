@@ -39,4 +39,11 @@ public class RukouServiceImpl implements RukouService {
         rukouDao.addRecord(record);
     }
 
+    @Override
+    public List<Record> search(Integer page, Integer pageSize, String search) {
+        PageHelper.startPage(page,pageSize);
+        String searchStr = "%"+search+"%";
+        return rukouDao.search(searchStr);
+    }
+
 }
