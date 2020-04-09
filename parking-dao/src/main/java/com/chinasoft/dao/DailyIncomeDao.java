@@ -12,7 +12,7 @@ public interface DailyIncomeDao {
     @Select("select * from daily_income group by time desc")
     List<DailyIncome> findAll();
 
-    @Select("SELECT COUNT(id) from user WHERE createtime BETWEEN #{time} and (SELECT DATE_FORMAT(DATE_ADD(#{time},INTERVAL 1 DAY),'%Y-%m-%d'))")
+    @Select("SELECT COUNT(id) from user WHERE createtime BETWEEN #{time} and (SELECT DATE_FORMAT(DATE_ADD(#{time},INTERVAL 1 DAY),'%Y-%m-%d')) and role = 0")
     Double findVipCostByTime(String time);
 
     @Select("select vipCost from fee")
